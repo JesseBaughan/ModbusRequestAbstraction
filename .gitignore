@@ -6,3 +6,6 @@
 
 # Ignore .o files
 *.o
+
+# Include makefile
+!Makefile
