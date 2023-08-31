@@ -2,13 +2,13 @@
 This was a learning exercise prompted by a challenge at work. We were working on 
 integrating a new sensor that utilised MODBUS over RS-485. MODBUS operates by sending 
 a request to a slave address and reading the returned response.
-<br>
+
 The tricky part of this problem was thatthe requests themselves were varying
 lengths and had varying data which was in some cases static and other cases
 required runtime data. Additionally, the responses were also varying length.
 Due to this code running on a embedded device, there was no STL containers
 such as vector or array and dynamic allocation was not allowed.
-<br>
+
 ## Constraints
 The following constratins where imposed:
 - The interface used to send/receive the request/response data to the device needed to be flexible.
