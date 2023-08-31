@@ -26,7 +26,7 @@ message being sent.
 - Cannot use stl vector or array as it wasn't available on the particular embedded device
 
 - No dynamic allocation allowed - typically avoided on embedded devices.
-<br>
+
 ## Solution
 Knowing the message that needed sending at runtime, the length of the request array,
 the length of the response array and the response struct type was known. This made
