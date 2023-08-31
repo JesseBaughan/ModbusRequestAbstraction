@@ -31,18 +31,18 @@ message being sent.
 Knowing the message that needed sending at runtime, the length of the request array,
 the length of the response array and the response struct type was known. This made
 a perfect case for templates to provide compile-time polymorphism. 
-<br>
+
 A virtual base class ModbusRequest was defined to take in two template arguments,
 the REQUEST_SIZE and the response struct type which was used to determine the response size.
-<br>
+
 Concrete child classe were then defined for all requests that were to be made to 
 the sensor. Each child class simply passed in the required template arguments as a
 part of it's definition. Any static request data was assigned in the constuctor
 and runtime data could be passed in on consctruction.
-<br>
+
 The request and response was performed through the message class itself,
 by passing in a reference to the interface. 
-<br>
+
 The interface itself was a very simple virtual base class with send and receive 
 functions. A concrete child class for a PX4 UART inteface was defined and used
 to send and receive. Seeing as this wasn't running on target, stdout was used
