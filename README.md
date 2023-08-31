@@ -49,4 +49,7 @@ to send and receive. Seeing as this wasn't running on target, stdout was used
 to test the correct return data which was filled with mock data within the PX4 
 receive function.
 
+## How to build and run
+Simply run 'make' command from the repo directory and start the program ./modbus_test
+
 
