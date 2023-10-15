@@ -1,12 +1,12 @@
 #pragma once
 
-#include "ModbusInterface.hpp"
+#include "../ModbusInterface.hpp"
 
-class UartModbuesInterface : public ModbusInterface
+class UartModbusInterface : public ModbusInterface
 {
 public:
-    UartModbuesInterface() {}
-    ~UartModbuesInterface() {}
+    UartModbusInterface() {}
+    ~UartModbusInterface() {}
 
     int32_t send(uint8_t* data, uint32_t num_bytes_to_send) override;
     int32_t receive(uint8_t* data, uint32_t num_bytes_to_receive) override;

@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(SOURCES
-    UartModbusInterface.cpp    
+    Gastech/UartModbusInterface.cpp    
     main.cpp    
 )
 

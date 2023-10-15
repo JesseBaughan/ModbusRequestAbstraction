@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ModbusRequest.hpp"
+#include "../ModbusRequest.hpp"
 
 struct __attribute__((__packed__)) WriteSingleRegResponse {
 	uint8_t slaveAddress;

@@ -1,11 +1,11 @@
 #include <iostream>
 
-#include "UartModbusInterface.hpp"
-#include "GastechModbusRequests.hpp"
+#include "Gastech/UartModbusInterface.hpp"
+#include "Gastech/GastechModbusRequests.hpp"
 
 int main(void)
 {
-    UartModbuesInterface interface;
+    UartModbusInterface interface;
     static constexpr uint8_t slave_address = 0x08;
 
     SetGasUnitsRequest request = SetGasUnitsRequest(slave_address);
