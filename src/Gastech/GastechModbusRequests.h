@@ -11,7 +11,7 @@
 
 #include "../ModbusRequest.h"
 
-// We use __packed__ so we don't have packing issues.
+// We use __packed__ so we don't have data packing issues.
 struct __attribute__((__packed__)) WriteSingleRegResponse {
 	uint8_t slaveAddress;
 	uint8_t functionCode;
@@ -25,9 +25,9 @@ struct __attribute__((__packed__)) WriteSingleRegResponse {
 class WriteSystemTimeRequest : public ModbusRequest<8, WriteSingleRegResponse>
 {
 public:
-    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SYSTEM_TIME_LOW = 0x00;			// 40013 - 40001
+    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SYSTEM_TIME_LOW = 0x00;			
     static constexpr uint8_t REGISTER_ADDRESS_WRITE_SYSTEM_TIME_HIGH = 0x0C;
-    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SET_SYSTEM_TIME_LOW = 0x00;		// 00004 - 1
+    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SET_SYSTEM_TIME_LOW = 0x00;		
 
     explicit WriteSystemTimeRequest(uint8_t slave_address, uint8_t* request_data)
         : ModbusRequest(slave_address)
@@ -45,9 +45,9 @@ public:
 class SetGasUnitsRequest : public ModbusRequest<6, WriteSingleRegResponse>
 {
 public:
-    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SYSTEM_TIME_LOW = 0x00;			// 40013 - 40001
+    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SYSTEM_TIME_LOW = 0x00;			
     static constexpr uint8_t REGISTER_ADDRESS_WRITE_SYSTEM_TIME_HIGH = 0x0C;
-    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SET_SYSTEM_TIME_LOW = 0x00;		// 00004 - 1
+    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SET_SYSTEM_TIME_LOW = 0x00;		
 
     explicit SetGasUnitsRequest(uint8_t slave_address)
         : ModbusRequest(slave_address)
