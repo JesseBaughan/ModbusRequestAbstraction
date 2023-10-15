@@ -44,9 +44,9 @@ The request and response was performed through the message class itself,
 by passing in a reference to the interface. 
 
 The interface itself was a very simple virtual base class with send and receive 
-functions. A concrete child class for a PX4 UART inteface was defined and used
+functions. A concrete child class for a UART inteface was defined and used
 to send and receive. Seeing as this wasn't running on target, stdout was used
-to test the correct return data which was filled with mock data within the PX4 
+to test the correct return data which was filled with mock data within the Uart 
 receive function.
 
 ## How to build and run
