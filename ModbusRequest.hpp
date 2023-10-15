@@ -16,21 +16,22 @@ public:
 
     virtual ~ModbusRequest() {};
 
-    void make(ModbusInterface& interface) 
+    virtual bool make(ModbusInterface& interface)
     {
         interface.send(_request_buffer, _request_length);
+        interface.receive((void*)&_return_data, _response_length);
+
+        return true;
     }
 
-    ResponseType get_response(ModbusInterface& interface)
+    ResponseType get_response()
     {
-        ResponseType output_struct;
-        interface.receive((void*)&output_struct, _response_length);
-        return output_struct;
+        return _return_data;
     }
 
 protected:
     uint8_t _request_buffer[REQUEST_LENGTH];
-    uint8_t _response_buffer[sizeof(ResponseType)];
+    ResponseType _return_data;
 
 private:
     uint8_t _slave_address;

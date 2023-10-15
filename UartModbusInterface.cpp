@@ -1,25 +1,27 @@
 #include "UartModbusInterface.hpp"
 
-void add_crc_to_request(uint8_t* buffer, uint8_t insertion_index)
-{
-    // Include crc calc in request
-    //uint16_t crc_16 = crc16_calc(_request_buffer, _request_length);
-    uint16_t crc_16 = 0;
-    *(uint16_t*)&buffer[insertion_index] = crc_16 | crc_16 >> 8;
-}
+void add_crc_to_request(uint8_t* buffer, uint8_t insertion_index);
 
 int32_t PX4ModbusInterface::send(void* data, uint32_t num_bytes_to_send)
 {
     add_crc_to_request((uint8_t*)data, num_bytes_to_send - 2);
 
-    //send some data
+    // Here we would send the data via interface
 
     return num_bytes_to_send;
 }
 
+void add_crc_to_request(uint8_t* buffer, uint8_t insertion_index)
+{
+    // Crc value is a dummy value for now.
+    uint16_t crc_16 = 183;
+    *(uint16_t*)&buffer[insertion_index] = crc_16 | crc_16 >> 8;
+}
+
 int32_t PX4ModbusInterface::receive(void* data, uint32_t num_bytes_to_receive)
 {
-    //Add some kind of delay
+    // Here we would grab the data from the interface.
+    // Instead we are fill output with dummy data for testing purposes.
     for(int i = 0; i < num_bytes_to_receive; i++)
     {
         *((uint8_t*)data + i) = 5;
