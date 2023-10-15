@@ -3,7 +3,7 @@ This was a learning exercise prompted by a challenge at work. We were working on
 integrating a new sensor that utilised MODBUS over RS-485. MODBUS operates by sending 
 a request to a slave address and reading the returned response.
 
-The tricky part of this problem was thatthe requests themselves were varying
+The tricky part of this problem was that the requests themselves were varying
 lengths and had varying data which was in some cases static and other cases
 required runtime data. Additionally, the responses were also varying length.
 Due to this code running on a embedded device, there was no STL containers
@@ -11,17 +11,16 @@ such as vector or array and dynamic allocation was not allowed.
 
 ## Constraints
 The following constratins where imposed:
-- The interface used to send/receive the request/response data to the device needed to be flexible.
+- The interface used to send/receive the request/response data to the device needed to be flexible
 because MODBUS can be used over different communication buses such as CANBUS, Etherenet or RS-484.
 
 - Defining new requests had to be easy and done via extension not modification. 
 
-- Messages has to be flexible to allow passing in of run-time data if required.
+- Messages interface must allow passing in of run-time data - if required.
 
-- The response had to be pack into and returned as a struct for that particualr response type.
+- The response should be returned as a struct for the particular request made.
 
-- Send/receive buffers could not exceed the actual request/response size for the particular
-message being sent.
+- Send/receive buffers could not exceed the actual request/response size.
 
 - Cannot use stl vector or array as it wasn't available on the particular embedded device
 
