@@ -2,7 +2,7 @@
 
 void add_crc_to_request(uint8_t* buffer, uint8_t insertion_index);
 
-int32_t PX4ModbusInterface::send(uint8_t* data, uint32_t num_bytes_to_send)
+int32_t UartModbuesInterface::send(uint8_t* data, uint32_t num_bytes_to_send)
 {
     add_crc_to_request(data, num_bytes_to_send - 2);
 
@@ -18,7 +18,7 @@ void add_crc_to_request(uint8_t* buffer, uint8_t insertion_index)
     *(uint16_t*)&buffer[insertion_index] = crc_16 | crc_16 >> 8;
 }
 
-int32_t PX4ModbusInterface::receive(uint8_t* data, uint32_t num_bytes_to_receive)
+int32_t UartModbuesInterface::receive(uint8_t* data, uint32_t num_bytes_to_receive)
 {
     // Here we would grab the data from the interface.
     // Instead we are fill output with dummy data for testing purposes.

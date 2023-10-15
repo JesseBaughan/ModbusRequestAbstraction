@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    PX4ModbusInterface interface;
+    UartModbuesInterface interface;
     static constexpr uint8_t slave_address = 0x08;
 
     SetGasUnitsRequest request = SetGasUnitsRequest(slave_address);
