@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * 
- * @brief Example of how to make a Modbus request using the interface.
+ * @brief Example of how to make Modbus requests using the interface.
  * 
  * @author Jesse B
  */
@@ -30,7 +30,7 @@ int main(void)
         std::cout << "Response: " << unsigned(response.data_0) << std::endl;
     }
 
-    // Secondary request passing runtime data
+    // Secondary request passing runtime data.
     uint8_t time_data[4];
     get_time_data(time_data);
     WriteSystemTimeRequest sys_time_request = WriteSystemTimeRequest(slave_address, time_data);
@@ -45,6 +45,7 @@ void get_time_data(uint8_t* data)
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     auto end = std::chrono::system_clock::now();
  
+    // Find the time difference and assign to data.
     auto elapsed_seconds = end - start;
     auto secs = std::chrono::duration_cast<std::chrono::duration<float>>(elapsed_seconds);
     *(uint32_t*)&data[0] = static_cast<uint32_t>(secs.count());
