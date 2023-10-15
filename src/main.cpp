@@ -5,9 +5,11 @@
 
 int main(void)
 {
+    // Create the interface that will send/receive the Modbus data.
     UartModbusInterface interface;
-    static constexpr uint8_t slave_address = 0x08;
 
+    // Make the Modbus request using the interface.
+    static constexpr uint8_t slave_address = 0x08;
     SetGasUnitsRequest request = SetGasUnitsRequest(slave_address);
     bool success = request.make(interface);
     if(success)
