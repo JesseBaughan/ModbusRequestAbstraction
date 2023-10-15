@@ -19,19 +19,19 @@ public:
     virtual bool make(ModbusInterface& interface)
     {
         interface.send(_request_buffer, _request_length);
-        interface.receive((void*)&_return_data, _response_length);
+        interface.receive((uint8_t*)&_response_data, _response_length);
 
         return true;
     }
 
     ResponseType get_response()
     {
-        return _return_data;
+        return _response_data;
     }
 
 protected:
     uint8_t _request_buffer[REQUEST_LENGTH];
-    ResponseType _return_data;
+    ResponseType _response_data;
 
 private:
     uint8_t _slave_address;
