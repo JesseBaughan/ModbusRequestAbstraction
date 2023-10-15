@@ -32,6 +32,8 @@ public:
     explicit WriteSystemTimeRequest(uint8_t slave_address, uint8_t* request_data)
         : ModbusRequest(slave_address)
     {
+        // Must start at index 1 as 0 is used for slave address.
+        // TODO: Should we implement method so that we can use 0 indexing?
         _request_buffer[1] = FUNCTION_CODE_WRITE_SINGLE_COIL;
 		_request_buffer[2] = REGISTER_ADDRESS_WRITE_SYSTEM_TIME_LOW;
 		_request_buffer[3] = REGISTER_ADDRESS_WRITE_SET_SYSTEM_TIME_LOW;

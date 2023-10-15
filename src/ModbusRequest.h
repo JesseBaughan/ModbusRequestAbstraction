@@ -37,7 +37,11 @@ protected:
     explicit ModbusRequest(uint8_t slave_address)
         : _slave_address(slave_address)
         , _request_length(REQUEST_LENGTH)
-        , _response_length(sizeof(ResponseType)) {}
+        , _response_length(sizeof(ResponseType)) 
+    {
+        // First element of request buffer is always the slave address.
+        _request_buffer[0] = _slave_address;
+    }
 
     virtual ~ModbusRequest() {};
 
