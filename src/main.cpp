@@ -7,9 +7,13 @@
  */
 
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 #include "Gastech/UartModbusInterface.h"
 #include "Gastech/GastechModbusRequests.h"
+
+void get_time_data(uint8_t* data);
 
 int main(void)
 {
@@ -18,15 +22,32 @@ int main(void)
 
     // Make the Modbus request using the interface.
     static constexpr uint8_t slave_address = 0x08;
-    SetGasUnitsRequest request = SetGasUnitsRequest(slave_address);
-    bool success = request.make(interface);
+    SetGasUnitsRequest gas_unit_request = SetGasUnitsRequest(slave_address);
+    bool success = gas_unit_request.make(interface);
     if(success)
     {
-        WriteSingleRegResponse response = request.get_response();
-        std::cout << "I got a response: " << unsigned(response.data_0) << std::endl;
+        WriteSingleRegResponse response = gas_unit_request.get_response();
+        std::cout << "Response: " << unsigned(response.data_0) << std::endl;
     }
 
+    // Secondary request passing runtime data
+    uint8_t time_data[4];
+    get_time_data(time_data);
+    WriteSystemTimeRequest sys_time_request = WriteSystemTimeRequest(slave_address, time_data);
+    sys_time_request.make(interface);
+
     return 0;
+}
+
+void get_time_data(uint8_t* data)
+{
+    auto start = std::chrono::system_clock::now();
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    auto end = std::chrono::system_clock::now();
+ 
+    auto elapsed_seconds = end - start;
+    auto secs = std::chrono::duration_cast<std::chrono::duration<float>>(elapsed_seconds);
+    *(uint32_t*)&data[0] = static_cast<uint32_t>(secs.count());
 }
 
 /*** end of file ***/
