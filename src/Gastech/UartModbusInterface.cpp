@@ -1,4 +1,13 @@
-#include "UartModbusInterface.hpp"
+/**
+ * @file ModbusInterface.cpp
+ * 
+ * @brief Example implementation of the Uart modbus interface with 
+ * dummy data being used for testing.
+ * 
+ * @author Jesse B
+ */
+
+#include "UartModbusInterface.h"
 
 void add_crc_to_request(uint8_t* buffer, uint8_t insertion_index);
 
@@ -29,3 +38,5 @@ int32_t UartModbusInterface::receive(uint8_t* data, uint32_t num_bytes_to_receiv
 
     return num_bytes_to_receive;
 }
+
+/*** end of file ***/

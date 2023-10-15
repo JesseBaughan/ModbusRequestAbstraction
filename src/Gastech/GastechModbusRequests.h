@@ -1,7 +1,17 @@
-#pragma once
+/**
+ * @file GastechModbusRequests.h
+ *
+ * @brief Modbus requests for a Gastech sensor.
+ * 
+ * @author Jesse B 
+ */
 
-#include "../ModbusRequest.hpp"
+#ifndef GASTECH_MODBUS_REQUESTS_H_
+#define GASTECH_MODBUS_REQUESTS_H_
 
+#include "../ModbusRequest.h"
+
+// We use __packed__ so we don't have packing issues.
 struct __attribute__((__packed__)) WriteSingleRegResponse {
 	uint8_t slaveAddress;
 	uint8_t functionCode;
@@ -49,3 +59,7 @@ public:
 		_request_buffer[5] = 0x00;
     }
 };
+
+#endif /* GASTECH_MODBUS_REQUESTS_H_ */
+
+/*** end of file ***/

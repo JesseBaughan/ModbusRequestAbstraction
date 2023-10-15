@@ -1,7 +1,15 @@
+/**
+ * @file main.cpp
+ * 
+ * @brief Example of how to make a Modbus request using the interface.
+ * 
+ * @author Jesse B
+ */
+
 #include <iostream>
 
-#include "Gastech/UartModbusInterface.hpp"
-#include "Gastech/GastechModbusRequests.hpp"
+#include "Gastech/UartModbusInterface.h"
+#include "Gastech/GastechModbusRequests.h"
 
 int main(void)
 {
@@ -20,3 +28,5 @@ int main(void)
 
     return 0;
 }
+
+/*** end of file ***/
