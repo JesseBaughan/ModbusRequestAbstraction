@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "PX4UartModbusInterface.hpp"
+#include "UartModbusInterface.hpp"
 #include "GastechModbusRequests.hpp"
 
 int main(void)

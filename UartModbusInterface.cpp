@@ -1,4 +1,4 @@
-#include "PX4UartModbusInterface.hpp"
+#include "UartModbusInterface.hpp"
 
 void add_crc_to_request(uint8_t* buffer, uint8_t insertion_index)
 {
