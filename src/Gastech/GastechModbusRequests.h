@@ -47,16 +47,15 @@ public:
 class SetGasUnitsRequest : public ModbusRequest<6, WriteSingleRegResponse>
 {
 public:
-    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SYSTEM_TIME_LOW = 0x00;			
-    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SYSTEM_TIME_HIGH = 0x0C;
-    static constexpr uint8_t REGISTER_ADDRESS_WRITE_SET_SYSTEM_TIME_LOW = 0x00;		
+    static constexpr uint8_t REGISTER_ADDRESS_READ_GAS_DATA_LOW = 0x00;			
+    static constexpr uint8_t REGISTER_ADDRESS_READ_GAS_DATA_HIGH = 0x0B;
 
     explicit SetGasUnitsRequest(uint8_t slave_address)
         : ModbusRequest(slave_address)
     {
         _request_buffer[1] = FUNCTION_CODE_WRITE_SINGLE_COIL;
-		_request_buffer[2] = REGISTER_ADDRESS_WRITE_SYSTEM_TIME_LOW;
-		_request_buffer[3] = REGISTER_ADDRESS_WRITE_SET_SYSTEM_TIME_LOW;
+		_request_buffer[2] = REGISTER_ADDRESS_READ_GAS_DATA_LOW;
+		_request_buffer[3] = REGISTER_ADDRESS_READ_GAS_DATA_HIGH;
 		_request_buffer[4] = 0x01;
 		_request_buffer[5] = 0x00;
     }
